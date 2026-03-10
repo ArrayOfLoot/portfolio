@@ -3,16 +3,33 @@
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Site de Portfolio de Luchie Bonates">
+    <meta name="description" content="Luchie Bonates - Desenvolvedora Front-End & Game Developer especializada em Unity, Godot, HTML/CSS. Portfólio com projetos incríveis!">
+    <meta name="keywords" content="desenvolvedor, front-end, game dev, unity, godot, html, css, javascript, portfolio, luchie bonates">
     <meta name="author" content="Luchie Bonates">
-    <title>Luchie Bonates | Portfolio</title>
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Luchie Bonates | Portfolio">
+    <meta property="og:description" content="Desenvolvedora Front-End & Game Developer com experiência em Unity, Godot e tecnologias web">
+    <meta property="og:type" content="website">
+    <title>Luchie Bonates | Portfolio - Front-End & Game Developer</title>
     <!-- font icons -->
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Bootstrap + Steller main styles -->
 	<link rel="stylesheet" href="assets/css/portfolio.css">
 </head>
-<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+<body data-spy="scroll" data-target=".navbar" data-offset="40" class="light-theme">
+    
+    <!-- Loader -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p>Carregando Portfolio...</p>
+        </div>
+    </div>
 
     <!-- Page navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" data-spy="affix" data-offset-top="0">
@@ -36,11 +53,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#portfolio">Portfolio</a>
                     </li>
-                    
-                    
                     <li class="nav-item">
-                        <a class="- btn btn-primary rounded ml-4" href="https://wa.me/5592985912993?text=Ol%C3%A1%2C%20peguei%20seu%20n%C3%BAmero%20no%20seu%20site%20de%20portf%C3%B3lio.%20Poderia%20me%20ajudar%3F" 
-                        target="_blank">Fale Comigo!</a>
+                        <a class="nav-link" href="#certificates">Certificados</a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="theme-toggle" class="btn btn-outline-primary btn-sm ml-2" title="Alternar tema">
+                            <i class="fas fa-moon" id="theme-icon"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary rounded ml-2" href="https://wa.me/5592985912993?text=Ol%C3%A1%2C%20peguei%20seu%20n%C3%BAmero%20no%20seu%20site%20de%20portf%C3%B3lio.%20Poderia%20me%20ajudar%3F" 
+                        target="_blank"><i class="fab fa-whatsapp mr-1"></i>Fale Comigo!</a>
                     </li>
                 </ul>
             </div>
@@ -51,25 +74,38 @@
     <!-- Page Header -->
     <header class="header" id="home">
         <div class="container">
-            <div class="infos">
-                <h6 class="subtitle">Olá, eu sou</h6>
-                <h6 class="title">Luchie Bonates</h6>
-                <p>Programadora Front-End & Game Dev</p>
+            <div class="infos" data-aos="fade-right" data-aos-duration="600">
+                <h6 class="subtitle animate-fadeIn">Olá, eu sou</h6>
+                <h6 class="title animate-slideUp">Luchie Bonates</h6>
+                <p class="typed-text">Eu sou <span id="typed"></span></p>
 
-                <div class="buttons pt-3">
-                    <button class="btn btn-primary rounded">Me Contrate!</button>
-                    <a target="_blank" href="/Luchie Bonates CV.pdf" class="btn btn-dark rounded">DOWNLOAD CV</a>
+                <div class="buttons pt-3" data-aos="fade-up" data-aos-delay="200">
+                    <button class="btn btn-primary rounded pulse-animation" onclick="location.href='#about'">Me Contrate!</button>
+                    <a target="_blank" href="assets/Luchie Bonates cv estagiária (2).pdf" class="btn btn-dark rounded hover-lift">
+                        <i class="fas fa-download mr-2"></i>DOWNLOAD CV
+                    </a>
                 </div>      
 
-                <div class="socials mt-4">
-                    <a class="social-item" href="mailto:lbonatessimoes@gmail.com"><i class="ti-email"></i></a>
-                    <a class="social-item" href="https://www.linkedin.com/in/lu-chie/"><i class="ti-linkedin"></i></a>
-                    <a class="social-item" href="https://github.com/lu-chie"><i class="fa-brands fa-github"></i></a>
-                    <a class="social-item" href="https://luchie.itch.io"><i class="fa-brands fa-itch-io"></i></a>
+                <div class="socials mt-4" data-aos="fade-up" data-aos-delay="300">
+                    <a class="social-item" href="mailto:lbonatessimoes@gmail.com" title="Email">
+                        <i class="ti-email"></i>
+                    </a>
+                    <a class="social-item" href="https://www.linkedin.com/in/lu-chie/" title="LinkedIn" target="_blank">
+                        <i class="ti-linkedin"></i>
+                    </a>
+                    <a class="social-item" href="https://github.com/ArrayOfLoot" title="GitHub" target="_blank">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a class="social-item" href="https://luchie.itch.io" title="Itch.io" target="_blank">
+                        <i class="fa-brands fa-itch-io"></i>
+                    </a>
                 </div>
             </div>              
-            <div class="img-holder">
-                <img src="assets/imgs/Novo Projeto.png" alt="">
+            <div class="img-holder" data-aos="fade-left" data-aos-duration="600">
+                <div class="profile-wrapper">
+                    <img src="assets/imgs/programadora.png" alt="Luchie Bonates - Desenvolvedora">
+                    <!-- Removed floating elements for better performance -->
+                </div>
             </div>      
         </div>  
 
@@ -80,15 +116,46 @@
     <section id="about" class="section mt-3">
         <div class="container mt-5">
             <div class="row text-center text-md-left">
-                <div class="col-md-3">
-                    <img src="assets/imgs/avatar luchie.jpeg" alt="" class="img-thumbnail mb-4">
+                <div class="col-md-3" data-aos="zoom-in">
+                    <div class="profile-image-container">
+                        <img src="assets/imgs/avatar luchie.jpeg" alt="Luchie Bonates" class="img-thumbnail mb-4 profile-hover">
+                        <div class="profile-badge">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="pl-md-4 col-md-9">
-                    <h6 class="title">Luchie Bonates</h6>
-                    <p class="subtitle">Programadora e GameDev</p>
+                <div class="pl-md-4 col-md-9" data-aos="fade-left" data-aos-delay="200">
+                    <h6 class="title gradient-text">Luchie Bonates</h6>
+                    <p class="subtitle text-primary">Programadora e GameDev</p>
+                    <div class="about-stats mb-4">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="25">0</span>
+                            <span class="stat-label">Anos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="18">0</span>
+                            <span class="stat-label">Meses Exp.</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="15">0</span>
+                            <span class="stat-label">Projetos</span>
+                        </div>
+                    </div>
                     <p>Olá! Sou Luchie Bonates Simões, tenho 25 anos e sou formada em técnico de Analista de TI e sistemas com foco em linguagem de programação C# pela instituição Prepara. Atualmente estou cursando uma trilha de Front-End pela Cesar School e também curso Desenvolvimento de Jogos na Unity pela Udemy.</p>
                     <p>Tenho experiência de cerca de 1 ano e meio na área de desenvolvimento de jogos. Já participei de algumas game jams como voluntária da Game Jam+ edição 2023/2024 e como programadora da Manas Game Jam e Ctrl Alt+Frame Jam. Também faço parte de um studio de jogos indie, a Deathmare Studios. Sou curiosa por novidades e procuro sempre estar me atualizando sobre novas tecnologias e gosto muito de trabalhar em equipe e ter um bom convívio com meus colegas.</p>
-                    <button class="btn btn-primary rounded mt-3">DOWNLOAD CV</button>                   
+                    
+                    <div class="tech-badges mt-4 mb-4">
+                        <span class="tech-badge">Unity</span>
+                        <span class="tech-badge">Godot</span>
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">C#</span>
+                    </div>
+                    
+                    <button class="btn btn-primary rounded mt-3 hover-lift" onclick="window.open('assets/Luchie Bonates cv estagiária (2).pdf', '_blank')">
+                        <i class="fas fa-download mr-2"></i>DOWNLOAD CV
+                    </button>                   
                 </div>
             </div>
         </div>
@@ -97,40 +164,52 @@
     <!-- Service section -->
     <section id="service" class="section">
         <div class="container text-center">
-            <h6 class="subtitle">Serviços</h6>
-            <h6 class="section-title mb-4">O que eu faço?</h6>
-            <p class="mb-5 pb-4">Sou desenvolvedora web front-end e programadora de jogos digitais</p>
+            <h6 class="subtitle" data-aos="fade-up">Serviços</h6>
+            <h6 class="section-title mb-4" data-aos="fade-up" data-aos-delay="100">O que eu faço?</h6>
+            <p class="mb-5 pb-4" data-aos="fade-up" data-aos-delay="200">Sou desenvolvedora web front-end e programadora de jogos digitais</p>
 
             <div class="row">
-                <div class="col-sm-6 col-md-3 mb-4">
-                    <div class="custom-card card border">
+                <div class="col-sm-6 col-md-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="custom-card card border service-card">
                         <div class="card-body">
-                            <i class="icon ti-crown"></i>
+                            <div class="service-icon-wrapper">
+                                <i class="icon fab fa-html5"></i>
+                            </div>
                             <h5>HTML & CSS</h5>
+                            <p class="service-desc">Desenvolvimento de páginas web responsivas e modernas</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-3 mb-4">
-                    <div class="custom-card card border">
+                <div class="col-sm-6 col-md-3 mb-4" data-aos="fade-up" data-aos-delay="250">
+                    <div class="custom-card card border service-card">
                         <div class="card-body">
-                            <i class="icon ti-desktop"></i>
+                            <div class="service-icon-wrapper">
+                                <i class="icon fab fa-unity"></i>
+                            </div>
                             <h5>Game Dev</h5>
+                            <p class="service-desc">Criação de jogos 2D e 3D com Unity e Godot</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-3 mb-4">
-                    <div class="custom-card card border">
+                <div class="col-sm-6 col-md-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="custom-card card border service-card">
                         <div class="card-body">
-                            <i class="icon ti-mobile"></i>
+                            <div class="service-icon-wrapper">
+                                <i class="icon fas fa-mobile-alt"></i>
+                            </div>
                             <h5>Mobile Games</h5>
+                            <p class="service-desc">Jogos otimizados para dispositivos móveis</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-3 mb-4">
-                    <div class="custom-card card border">
+                <div class="col-sm-6 col-md-3 mb-4" data-aos="fade-up" data-aos-delay="350">
+                    <div class="custom-card card border service-card">
                         <div class="card-body">
-                            <i class="icon ti-bar-chart"></i>
+                            <div class="service-icon-wrapper">
+                                <i class="icon fas fa-layer-group"></i>
+                            </div>
                             <h5>Level Design</h5>
+                            <p class="service-desc">Design de níveis criativos e envolventes</p>
                         </div>
                     </div>
                 </div>
@@ -140,35 +219,35 @@
     <!-- End of Sectoin -->
 
     <!-- Skills section -->
-    <section class="section">
+    <section class="section skills-section">
         <div class="container text-center">
-            <h6 class="subtitle">Skills</h6>
-            <h6 class="section-title mb-4">Por que me contratar?</h6>
-            <p class="mb-5 pb-4">Sou Pontual com meus compromissos e focada nos meus trabalhos. Mesmo com dificuldades eu sou uma pessoa que aprende muito rápido</p>
+            <h6 class="subtitle" data-aos="fade-up">Skills</h6>
+            <h6 class="section-title mb-4" data-aos="fade-up" data-aos-delay="100">Por que me contratar?</h6>
+            <p class="mb-5 pb-4" data-aos="fade-up" data-aos-delay="200">Sou Pontual com meus compromissos e focada nos meus trabalhos. Mesmo com dificuldades eu sou uma pessoa que aprende muito rápido</p>
 
             <div class="row text-left">
-                <div class="col-sm-6">
-                    <h6 class="mb-3">Unity</h6>
-                    <div class="progress">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span>89%</span></div>
+                <div class="col-sm-6" data-aos="fade-right" data-aos-delay="300">
+                    <h6 class="mb-3 skill-label"><i class="fab fa-unity mr-2"></i>Unity</h6>
+                    <div class="progress skill-progress">
+                        <div class="progress-bar bg-primary progress-animated" role="progressbar" style="width: 89%;" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"><span>89%</span></div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <h6 class="mb-3">Godot</h6>
-                    <div class="progress">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 83%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span>83%</span></div>
+                <div class="col-sm-6" data-aos="fade-left" data-aos-delay="400">
+                    <h6 class="mb-3 skill-label"><i class="fas fa-gamepad mr-2"></i>Godot</h6>
+                    <div class="progress skill-progress">
+                        <div class="progress-bar bg-primary progress-animated" role="progressbar" style="width: 83%;" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100"><span>83%</span></div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <h6 class="mb-3">HTML</h6>
-                    <div class="progress">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 95%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span>95%</span></div>
+                <div class="col-sm-6" data-aos="fade-right" data-aos-delay="500">
+                    <h6 class="mb-3 skill-label"><i class="fab fa-html5 mr-2"></i>HTML</h6>
+                    <div class="progress skill-progress">
+                        <div class="progress-bar bg-primary progress-animated" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"><span>95%</span></div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <h6 class="mb-3">CSS</h6>
-                    <div class="progress">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 90%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span>90%</span></div>
+                <div class="col-sm-6" data-aos="fade-left" data-aos-delay="600">
+                    <h6 class="mb-3 skill-label"><i class="fab fa-css3-alt mr-2"></i>CSS</h6>
+                    <div class="progress skill-progress">
+                        <div class="progress-bar bg-primary progress-animated" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><span>90%</span></div>
                     </div>
                 </div>
             </div>  
@@ -177,51 +256,76 @@
     <!-- End of Skills sections -->
 
     <!-- Portfolio section -->
-    <section id="portfolio" class="section">
+    <section id="portfolio" class="section portfolio-section">
         <div class="container text-center">
-            <h6 class="subtitle">Portfolio</h6>
-            <h6 class="section-title mb-4">Veja alguns dos meus trabalhos</h6>
-            <p class="mb-5 pb-4">Aqui estão alguns jogos ou páginas web em que trabalhei nos últimos tempos</p>
+            <h6 class="subtitle" data-aos="fade-up">Portfolio</h6>
+            <h6 class="section-title mb-4" data-aos="fade-up" data-aos-delay="100">Veja alguns dos meus trabalhos</h6>
+            <p class="mb-5 pb-4" data-aos="fade-up" data-aos-delay="200">Aqui estão alguns jogos ou páginas web em que trabalhei nos últimos tempos</p>
 
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="img-wrapper">
-                        <img src="assets/imgs/lab rattack.png" alt="">
+            <!-- Portfolio Filter -->
+            <div class="portfolio-filter mb-5" data-aos="fade-up" data-aos-delay="300">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="games">Jogos</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+            </div>
+
+            <div class="row portfolio-grid">
+                <div class="col-sm-4 portfolio-item games" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="img-wrapper portfolio-card">
+                        <img src="assets/imgs/lab rattack.png" alt="Lab Rattack" loading="lazy">
                         <div class="overlay">
                             <div class="overlay-infos">
                                 <h5>Lab Rattack</h5>
-                                <a href="https://liofrz.itch.io/lab-rattack"><i class="ti-zoom-in"></i></a>
-                                <a href="https://liofrz.itch.io/lab-rattack"><i class="ti-link"></i></a>
+                                <p class="project-desc">Jogo de plataforma 2D</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Unity</span>
+                                    <span class="tech-tag">C#</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://liofrz.itch.io/lab-rattack" target="_blank" title="Ver Projeto"><i class="ti-zoom-in"></i></a>
+                                    <a href="https://liofrz.itch.io/lab-rattack" target="_blank" title="Acessar"><i class="ti-link"></i></a>
+                                </div>
                             </div>  
                         </div>
-                    </div>
-                                      
+                    </div>              
                 </div>
-                <div class="col-sm-4">
-                    
-                    <div class="img-wrapper">
-                        <img src="assets/imgs/Cosmeow.jpg" alt="">
+                <div class="col-sm-4 portfolio-item games" data-aos="zoom-in" data-aos-delay="500">  
+                    <div class="img-wrapper portfolio-card">
+                        <img src="assets/imgs/Cosmeow.jpg" alt="Cosmeow" loading="lazy">
                         <div class="overlay">
                             <div class="overlay-infos">
                                 <h5>Cosmeow</h5>
-                                <a href="https://liofrz.itch.io/cosmeow"><i class="ti-zoom-in"></i></a>
-                                <a href="https://liofrz.itch.io/cosmeow"><i class="ti-link"></i></a>
-                            </div>                              
+                                <p class="project-desc">Jogo casual de gatos</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Unity</span>
+                                    <span class="tech-tag">C#</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://liofrz.itch.io/cosmeow" target="_blank" title="Ver Projeto"><i class="ti-zoom-in"></i></a>
+                                    <a href="https://liofrz.itch.io/cosmeow" target="_blank" title="Acessar"><i class="ti-link"></i></a>
+                                </div>                              
+                            </div>
                         </div>
                     </div>                  
                 </div>
-                <div class="col-sm-4">
-                    <div class="img-wrapper">
-                        <img src="assets/imgs/marupiára.png" alt="">
+                <div class="col-sm-4 portfolio-item games" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="img-wrapper portfolio-card">
+                        <img src="assets/imgs/marupiára.png" alt="Marupiára" loading="lazy">
                         <div class="overlay">
                             <div class="overlay-infos">
                                 <h5>Marupiára</h5>
-                                <a href="https://straxelio.itch.io/marupiara"><i class="ti-zoom-in"></i></a>
-                                <a href="https://straxelio.itch.io/marupiara"><i class="ti-link"></i></a>
-                            </div>  
+                                <p class="project-desc">Aventura cultural brasileira</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Unity</span>
+                                    <span class="tech-tag">C#</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://straxelio.itch.io/marupiara" target="_blank" title="Ver Projeto"><i class="ti-zoom-in"></i></a>
+                                    <a href="https://straxelio.itch.io/marupiara" target="_blank" title="Acessar"><i class="ti-link"></i></a>
+                                </div>  
+                            </div>
                         </div>
-                    </div>
-                                   
+                    </div>             
                 </div>
             </div>
 
@@ -229,33 +333,336 @@
     </section>
     <!-- End of portfolio section -->
 
-    
+    <!-- Certificates section -->
+    <section id="certificates" class="section certificates-section">
+        <div class="container text-center">
+            <h6 class="subtitle" data-aos="fade-up">Certificações</h6>
+            <h6 class="section-title mb-4" data-aos="fade-up" data-aos-delay="100">Minhas Conquistas</h6>
+            <p class="mb-5 pb-4" data-aos="fade-up" data-aos-delay="200">Certificações e cursos que complementam minha formação</p>
 
-    
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="300">
+                    <div class="certificate-card">
+                        <div class="certificate-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h5>Técnico em Análise de TI</h5>
+                        <p class="certificate-institution">Prepara Cursos</p>
+                        <p class="certificate-tech">C# • Sistemas • Banco de Dados</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="400">
+                    <div class="certificate-card">
+                        <div class="certificate-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h5>Trilha Front-End</h5>
+                        <p class="certificate-institution">Cesar School</p>
+                        <p class="certificate-tech">HTML • CSS • JavaScript • React</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="500">
+                    <div class="certificate-card">
+                        <div class="certificate-icon">
+                            <i class="fab fa-unity"></i>
+                        </div>
+                        <h5>Desenvolvimento de Jogos</h5>
+                        <p class="certificate-institution">Udemy</p>
+                        <p class="certificate-tech">Unity • C# • Game Design</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact section -->
+    <section class="section contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto text-center">
+                    <h6 class="subtitle" data-aos="fade-up">Contato</h6>
+                    <h6 class="section-title mb-4" data-aos="fade-up" data-aos-delay="100">Vamos trabalhar juntos!</h6>
+                    <p class="mb-5 pb-4" data-aos="fade-up" data-aos-delay="200">Interessado em meus serviços? Entre em contato!</p>
+                    
+                    <div class="contact-methods" data-aos="fade-up" data-aos-delay="300">
+                        <a href="mailto:lbonatessimoes@gmail.com" class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>lbonatessimoes@gmail.com</span>
+                        </a>
+                        <a href="https://wa.me/5592985912993" target="_blank" class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>+55 92 98591-2993</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/lu-chie/" target="_blank" class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+                    
+                    <div class="mt-5" data-aos="fade-up" data-aos-delay="400">
+                        <a href="https://wa.me/5592985912993?text=Olá, peguei seu número no seu site de portfólio. Poderia me ajudar?" 
+                           target="_blank" class="btn btn-primary btn-lg rounded pulse-animation">
+                            <i class="fab fa-whatsapp mr-2"></i>Fale Comigo Agora!
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Page Footer -->
     <footer class="page-footer">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-sm-6">
-                    <p>Copyright <script>document.write(new Date().getFullYear())</script> &copy; <a href="http://www.devcrud.com" target="_blank">Luchie</a></p>
+                <div class="col-md-6">
+                    <div class="footer-content">
+                        <h5 class="footer-title">Luchie Bonates</h5>
+                        <p class="footer-subtitle">Front-End Developer & Game Developer</p>
+                        <div class="footer-socials">
+                            <a href="mailto:lbonatessimoes@gmail.com" class="footer-social" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/lu-chie/" target="_blank" class="footer-social" title="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/ArrayOfLoot" target="_blank" class="footer-social" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://luchie.itch.io" target="_blank" class="footer-social" title="Itch.io">
+                                <i class="fab fa-itch-io"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    
+                <div class="col-md-6">
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h6>Navegação</h6>
+                            <ul>
+                                <li><a href="#home">Home</a></li>
+                                <li><a href="#about">Sobre</a></li>
+                                <li><a href="#service">Serviços</a></li>
+                                <li><a href="#portfolio">Portfolio</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h6>Contato</h6>
+                            <ul>
+                                <li><a href="mailto:lbonatessimoes@gmail.com">Email</a></li>
+                                <li><a href="https://wa.me/5592985912993" target="_blank">WhatsApp</a></li>
+                                <li><a href="#certificates">Certificados</a></li>
+                                <li><a href="#portfolio">Portfolio</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="copyright">&copy; <script>document.write(new Date().getFullYear())</script> Luchie Bonates. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-right">
+                    <p class="footer-tech">Feito com <i class="fas fa-heart text-danger"></i> e muito código</p>
                 </div>
             </div>
         </div>
     </footer> 
     <!-- End of page footer -->
+    
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" class="scroll-top-btn" title="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 	
 	<!-- core  -->
     <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
     <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
     <!-- bootstrap 3 affix -->
 	<script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
-
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- steller js -->
     <script src="assets/js/steller.js"></script>
+
+    <!-- Custom Scripts -->
+    <script>
+        // Initialize AOS with faster settings
+        AOS.init({
+            duration: 400,
+            easing: 'ease-out',
+            once: true,
+            mirror: false,
+            disable: 'mobile'
+        });
+
+        // Typed.js Effect with faster speed
+        document.addEventListener('DOMContentLoaded', function() {
+            new Typed('#typed', {
+                strings: [
+                    'Desenvolvedora Front-End',
+                    'Game Developer',
+                    'Programadora Unity',
+                    'Especialista em Godot'
+                ],
+                typeSpeed: 80,
+                backSpeed: 40,
+                backDelay: 1500,
+                startDelay: 500,
+                loop: true,
+                showCursor: true,
+                cursorChar: '|'
+            });
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        body.classList.add(currentTheme + '-theme');
+        
+        if (currentTheme === 'dark') {
+            themeIcon.className = 'fas fa-sun';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('light-theme')) {
+                body.classList.remove('light-theme');
+                body.classList.add('dark-theme');
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-theme');
+                body.classList.add('light-theme');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Scroll to Top Button
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Portfolio Filter - Optimized
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Counter Animation - Optimized
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const increment = target / 50; // Faster animation
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.innerText = target;
+                        clearInterval(timer);
+                    } else {
+                        counter.innerText = Math.ceil(current);
+                    }
+                }, 30); // Faster interval
+            });
+        }
+
+        // Trigger counter animation when scrolled into view
+        const aboutSection = document.getElementById('about');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        
+        observer.observe(aboutSection);
+
+        // Loader - Faster
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 300);
+            }, 500); // Reduced from 1000ms
+        });
+
+        // Lazy Loading Images
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.src;
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        images.forEach(img => imageObserver.observe(img));
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const offsetTop = targetId === '#home' ? 0 : target.offsetTop - 70;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL hash
+                    setTimeout(() => {
+                        history.pushState(null, null, targetId);
+                    }, 100);
+                }
+            });
+        });
+    </script>
 
 </body>
 </html> 
