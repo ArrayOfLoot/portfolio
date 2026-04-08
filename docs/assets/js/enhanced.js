@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ========== MAGNETIC CURSOR ==========
+const cursor = document.createElement('div');
 const cursorTrail = document.createElement('div');
 cursor.style.cssText = `
   position: fixed;
