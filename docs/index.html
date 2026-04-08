@@ -825,16 +825,22 @@
         
         observer.observe(aboutSection);
 
-        // Loader - Faster
-        window.addEventListener('load', () => {
+        // Loader - Faster com timeout absoluto
+        function hideLoader() {
             const loader = document.getElementById('loader');
-            setTimeout(() => {
+            if (loader) {
                 loader.style.opacity = '0';
                 setTimeout(() => {
                     loader.style.display = 'none';
                 }, 300);
-            }, 500); // Reduced from 1000ms
-        });
+            }
+        }
+        
+        // Desaparecer quando página carrega
+        window.addEventListener('load', hideLoader);
+        
+        // OU desaparecer após 3 segundos (fallback para segurança)
+        setTimeout(hideLoader, 3000);
 
         // Lazy Loading Images
         const images = document.querySelectorAll('img[loading="lazy"]');
