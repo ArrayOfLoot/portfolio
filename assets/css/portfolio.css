@@ -70,7 +70,6 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: all 0.3s ease;
-  overflow-x: hidden;
 }
 
 /* Scroll to Top Button */

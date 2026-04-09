@@ -10,25 +10,71 @@
 // ========== SMOOTH SCROLL NATIVE ==========
 document.documentElement.style.scrollBehavior = 'smooth';
 
-// ========== HOME LINK HANDLER (SUPER RÁPIDO) ==========
+// ========== SMOOTH SCROLL & ANCHOR NAVIGATION ==========
 document.addEventListener('DOMContentLoaded', function() {
-  // Logo/Home link
-  const homeLink = document.querySelector('.navbar-brand');
-  if (homeLink) {
-    homeLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
+  // Interceptar todos os links de âncora (links que começam com #)
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href^="#"]');
+    if (link && link.href) {
+      const target = link.getAttribute('href');
+      
+      // Ignorar links vazios ou apenas '#'
+      if (!target || target === '#') return;
+      
+      const element = document.querySelector(target);
+      if (element) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Tentar scrollIntoView primeiro
+        try {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } catch(err) {
+          // Fallback se smooth scroll não funcionar
+          element.scrollIntoView(true);
+        }
+        
+        // Atualizar URL sem recarregar página
+        window.history.pushState(null, null, target);
+        
+        return false;
+      }
+    }
+  });
   
-  // Home nav link
-  const homeNavLink = document.querySelector('a[href="#home"]');
-  if (homeNavLink) {
-    homeNavLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Fix Bootstrap Scroll Spy - Melhor detecção de seção ativa
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section, header[id], .header');
+  const navbar = document.querySelector('.navbar');
+  
+  window.addEventListener('scroll', () => {
+    let current = '';
+    const scrollPos = window.pageYOffset;
+    
+    // Navbar shadow on scroll
+    if (scrollPos > 50) {
+      navbar.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+      navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+    } else {
+      navbar.style.boxShadow = 'none';
+      navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+    }
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (window.scrollY >= sectionTop - 200) {
+        current = section.getAttribute('id');
+      }
     });
-  }
+    
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  }, { passive: true });
 });
 
 // ========== MAGNETIC CURSOR ==========
@@ -271,53 +317,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-});
-
-// ========== NAVBAR ENHANCED BEHAVIOR ==========
-const navbar = document.querySelector('.navbar');
-const navLinks = document.querySelectorAll('.nav-link');
-
-window.addEventListener('scroll', () => {
-  const scrollPos = window.pageYOffset;
-  
-  // Navbar shadow on scroll
-  if (scrollPos > 50) {
-    navbar.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
-    navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-  } else {
-    navbar.style.boxShadow = 'none';
-    navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
-  }
-  
-  // Active nav link indicator
-  let current = '';
-  const sections = document.querySelectorAll('section, header');
-  
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    if (pageYOffset >= sectionTop - 200) {
-      current = section.getAttribute('id');
-    }
-  });
-  
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === '#' + current) {
-      link.classList.add('active');
-      link.style.color = '#FF8882';
-      link.style.fontWeight = '600';
-      
-      // Animated underline
-      const underline = link.querySelector('::after');
-      if (underline) {
-        underline.style.width = '100%';
-      }
-    } else {
-      link.style.color = '';
-      link.style.fontWeight = '';
-    }
-  });
 });
 
 // ========== SCROLL TO TOP ENHANCED ==========
