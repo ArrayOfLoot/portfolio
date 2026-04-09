@@ -62,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     sections.forEach(section => {
       const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
       if (window.scrollY >= sectionTop - 200) {
         current = section.getAttribute('id');
       }
@@ -153,9 +152,6 @@ if (window.matchMedia('(max-width: 768px)').matches) {
   cursor.style.display = 'none';
   cursorTrail.style.display = 'none';
 }
-
-// ========== SMOOTH SCROLL NATIVE ==========
-document.documentElement.style.scrollBehavior = 'smooth';
 
 // ========== PARALLAX EFFECT ==========
 const parallaxElements = document.querySelectorAll('[data-parallax]');

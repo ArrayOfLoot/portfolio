@@ -7,6 +7,9 @@
 ============================================================
 */
 
+// ========== SMOOTH SCROLL NATIVE ==========
+document.documentElement.style.scrollBehavior = 'smooth';
+
 // ========== SMOOTH SCROLL & ANCHOR NAVIGATION ==========
 document.addEventListener('DOMContentLoaded', function() {
   // Interceptar todos os links de âncora (links que começam com #)
@@ -59,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     sections.forEach(section => {
       const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
       if (window.scrollY >= sectionTop - 200) {
         current = section.getAttribute('id');
       }
