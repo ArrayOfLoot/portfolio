@@ -1,0 +1,38 @@
+name: Sync assets to docs
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'assets/**'
+      - 'index.html'
+      - '.github/workflows/sync-docs.yml'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Sync assets and root files to docs
+      run: |
+        # Copy assets
+        cp -r assets/* docs/assets/
+        
+        # Copy root HTML files
+        cp index.html docs/index.html
+        cp components.html docs/components.html 2>/dev/null || true
+    
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        if [[ -n $(git status -s) ]]; then
+          git add -A
+          git commit -m "chore: sync assets and root files to docs [automated]"
+          git push
+        fi
