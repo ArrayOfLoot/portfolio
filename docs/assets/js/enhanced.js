@@ -76,6 +76,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }, { passive: true });
 });
 
+// ========== SMOOTH SCROLL NATIVE ==========
+document.documentElement.style.scrollBehavior = 'smooth';
+
 // ========== MAGNETIC CURSOR ==========
 const cursor = document.createElement('div');
 const cursorTrail = document.createElement('div');
@@ -152,6 +155,9 @@ if (window.matchMedia('(max-width: 768px)').matches) {
   cursor.style.display = 'none';
   cursorTrail.style.display = 'none';
 }
+
+// ========== SMOOTH SCROLL NATIVE ==========
+document.documentElement.style.scrollBehavior = 'smooth';
 
 // ========== PARALLAX EFFECT ==========
 const parallaxElements = document.querySelectorAll('[data-parallax]');
