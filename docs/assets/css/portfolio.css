@@ -11171,41 +11171,46 @@ pre {
   overflow: hidden;
   margin-bottom: 30px;
   display: block;
-  display: block;
 }
 
 .img-wrapper img {
   position: relative;
   width: 100%;
+  height: 250px;
+  object-fit: contain;
+  background: var(--bg-secondary);
+  padding: 12px;
   z-index: 8;
 }
 
 .img-wrapper .overlay {
-  background: rgba(170, 170, 146, 0.7);
+  background: rgba(0, 0, 0, 0.72);
   position: absolute;
   left: 0;
-  bottom: 100%;
+  top: 0;
   width: 100%;
   height: 100%;
   z-index: 9;
   visibility: hidden;
   opacity: 0;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
+  -webkit-transition: opacity 0.35s ease, visibility 0.35s ease;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .img-wrapper .overlay .overlay-infos {
   position: absolute;
-  top: 0%;
+  top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-transition-delay: .2s;
-          transition-delay: .2s;
+  width: calc(100% - 2rem);
+  max-width: 320px;
   color: #fff;
+  text-align: center;
 }
 
 .img-wrapper .overlay .overlay-infos h5 {
@@ -11230,7 +11235,6 @@ pre {
 }
 
 .img-wrapper:hover .overlay, .img-wrapper:active .overlay {
-  bottom: 0;
   visibility: visible;
   opacity: 1;
 }
@@ -12072,12 +12076,14 @@ pre {
 .portfolio-card img {
   width: 100%;
   height: 250px;
-  object-fit: cover;
+  object-fit: contain;
+  background: var(--bg-secondary);
+  padding: 12px;
   transition: all 0.3s ease;
 }
 
 .portfolio-card:hover img {
-  transform: scale(1.1);
+  transform: scale(1.02);
 }
 
 .overlay {
@@ -12086,7 +12092,7 @@ pre {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.8);
+  background: linear-gradient(to top, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.48) 45%, rgba(0,0,0,0.05) 100%);
   color: white;
   display: flex;
   align-items: center;
@@ -12100,8 +12106,55 @@ pre {
 }
 
 .overlay-infos {
+  width: calc(100% - 1rem);
+  margin: 0.5rem auto;
+  padding: 1rem 1.1rem;
   text-align: center;
-  padding: 2rem;
+  background: rgba(0, 0, 0, 0.78);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  transform: translateY(12px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  max-height: 120px;
+  overflow: auto;
+}
+
+.overlay-infos {
+  animation: none;
+}
+
+.portfolio-card:hover .overlay-infos {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.overlay-infos h5 {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.project-desc {
+  font-size: 0.8rem;
+  margin-bottom: 0.65rem;
+  line-height: 1.35;
+}
+
+.project-tech {
+  margin-bottom: 0.75rem;
+}
+
+.project-links a {
+  width: 32px;
+  height: 32px;
+  line-height: 30px;
+}
+
+.beige-accent {
+  color: var(--primary) !important;
+  background: none !important;
+  -webkit-text-fill-color: var(--primary) !important;
+  text-shadow: none !important;
 }
 
 .overlay-infos h5 {
@@ -13105,6 +13158,20 @@ a::after {
 
 a:not(.btn):not(.social-item):not(.filter-btn):not(.contact-item):hover::after {
   width: 100%;
+}
+
+.image-link {
+  display: block;
+}
+
+.image-link::after {
+  display: none;
+}
+
+.contact-section .contact-title {
+  color: var(--primary);
+  background: none;
+  -webkit-text-fill-color: var(--primary);
 }
 
 /* Button pressed effect */
